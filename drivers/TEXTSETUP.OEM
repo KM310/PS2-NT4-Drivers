@@ -1,0 +1,52 @@
+[Disks]
+d1 = "PS2 Drivers for NT",\ARTSYS.TAG,\
+
+[Defaults]
+computer = halps2_up
+HAL = halps2
+scsi = hddps2
+display = gsps2
+
+[Computer]
+halps2_up = "Sony PlayStation 2 SCPH-30004"
+
+[scsi]
+hddps2 = "PS2 IDE HDD", hddps2
+usbps2 = "PS2 USB Ports", usbps2
+
+[Files.computer.halps2_up]
+hal = d1, halps2.dll
+
+[Files.scsi.hddps2]
+driver = d1, hddps2.sys, hddps2
+
+[Config.scsi.hddps2]
+
+[Files.scsi.usbps2]
+driver = d1, usbps2.sys, usbps2
+
+[Config.scsi.usbps2]
+
+[display]
+gsps2 = "PS2 Graphics Synthesizer (GS)"
+
+[Files.display.gsps2]
+driver = d1, gsps2.sys, gsps2
+dll = d1, gsps2.dll, gsps2
+
+[Files.display.fbps2]
+dll = d1, fbps2.dll, fbps2
+
+[Config.gsps2]
+
+[audio]
+audps2 = "PS2 SPU2 Audio"
+
+[Files.audio.audps2]
+driver = d1, audps2.sys, audps2
+
+[Config.audps2]
+
+value = "",      tag,                         REG_DWORD,    b
+value = Device0, VgaCompatible,               REG_DWORD,    0
+value = Device0, InstalledDisplayDrivers,     REG_MULTI_SZ, gsps2
